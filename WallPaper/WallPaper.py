@@ -11,9 +11,10 @@
 import requests
 from bs4 import BeautifulSoup as bs
 import re
+import os
 
 main_url = 'http://www.netbian.com'    #爬取背景的网站
-save_path = 'H:/DesktopBackground/'
+save_path = 'G:/DesktopBackground/'
 
 
 def Get_calendar(year=2020, month=6, img_num=5):
@@ -58,12 +59,14 @@ def Get_calendar(year=2020, month=6, img_num=5):
 
 
 def Delete_All():
-
-    return 0
+    for file in os.listdir(save_path):
+        if os.path.exists(file):
+            os.remove(file)
 
 
 if __name__ == '__main__':
-    Get_calendar()
+    Delete_All()
+    Get_calendar(month=7, img_num=10)
 
     print('Mission Complete!')
 
