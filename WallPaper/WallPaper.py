@@ -14,12 +14,12 @@ import re
 import os
 
 main_url = 'http://www.netbian.com'    #爬取背景的网站
-save_path = 'G:/DesktopBackground/'
+save_path = 'F:/DesktopBackground/'
 
 
 def Get_calendar(year=2020, month=6, img_num=5):
     url = main_url + '/rili/'
-    save_path = r'G:/DesktopBackground/'
+    save_path = r'F:/DesktopBackground/'
     match_date = str(year) + '年' + str(month) + '月'
 
     r = requests.get(url, timeout=10)    #链接到日历的主页面，在这里面寻找所有符合的图片
@@ -60,13 +60,13 @@ def Get_calendar(year=2020, month=6, img_num=5):
 
 def Delete_All():
     for file in os.listdir(save_path):
-        if os.path.exists(file):
-            os.remove(file)
+        if os.path.exists(save_path + file):
+            os.remove(save_path + file)
 
 
 if __name__ == '__main__':
     Delete_All()
-    Get_calendar(month=7, img_num=10)
+    Get_calendar(month=8, img_num=10)
 
     print('Mission Complete!')
 
